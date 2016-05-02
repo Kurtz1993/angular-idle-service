@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "sourceMap": true,
+        "removeComments": true,
+        "listFiles": true,
+        "outFile": "./dist/angular-idle.js"
+    },
+    "compileOnSave": false
+}
