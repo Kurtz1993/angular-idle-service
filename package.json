@@ -1,6 +1,6 @@
 {
   "name": "angular-idle-service",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An Angular service that responds to idle users.",
   "main": "./dist/angular-idle-service.js",
   "typings": "./dist/angular-idle-service.d.ts",
@@ -26,6 +26,7 @@
   "bugs": {
     "url": "https://github.com/Kurtz1993/angular-idle-service/issues"
   },
+  "readmeFilename": "readme.md",
   "homepage": "https://github.com/Kurtz1993/angular-idle-service#readme",
   "dependencies": {
     "angular": "^1.5.0",

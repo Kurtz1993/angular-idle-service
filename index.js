@@ -1,26 +1,26 @@
-angular.module('testApp', ['Idle'])
-    .config(function (KeepaliveProvider, IdleProvider) {
-        IdleProvider.setTimeoutTime(3);
-        IdleProvider.setIdleTime(5);
-        IdleProvider.keepalive(true);
-        KeepaliveProvider.setInterval(5);
-        KeepaliveProvider.http('http://localhost:8080');
+angular.module('testApp', ['$idle'])
+    .config(function ($keepaliveProvider, $idleProvider) {
+        $idleProvider.setTimeoutTime(3);
+        $idleProvider.setIdleTime(5);
+        $idleProvider.keepalive(true);
+        $keepaliveProvider.setInterval(5);
+        $keepaliveProvider.http('http://localhost:8080');
     })
-    .run(function (Keepalive, $rootScope, IdleLocalStorage, Idle) {
-        //Keepalive.start();
+    .run(function ($keepalive, $rootScope, $idle) {
+        //$keepalive.start();
         console.log(Idle);
-        Idle.watch();
-        $rootScope.$on('Keepalive', function () {
+        $idle.watch();
+        $rootScope.$on('$keepalive', function () {
             console.log('Keeping alive...');
         });
-        $rootScope.$on('KeepaliveResponse', function (data, status) {
+        $rootScope.$on('$keepaliveResponse', function (data, status) {
             console.log("Status: " + status);
             console.log(data);
         });
-        $rootScope.$on('IdleStart', function () {
+        $rootScope.$on('$userIdle', function () {
             console.log('You are idle...');
         });
-        $rootScope.$on('IdleTimeout', function () {
+        $rootScope.$on('$userTimeout', function () {
             console.log('You timed out');
         });
     });

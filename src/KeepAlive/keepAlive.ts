@@ -74,7 +74,7 @@ export class KeepaliveProvider implements ng.IServiceProvider, IKeepaliveProvide
   }
 
   private ping(): void {
-    this.rootScope.$broadcast('Keepalive');
+    this.rootScope.$broadcast('$keepalive');
     if (angular.isObject(this.options.http)) {
       this.$http(this.options.http)
         .success(this.handleKeepaliveResponse.bind(this))
@@ -83,7 +83,7 @@ export class KeepaliveProvider implements ng.IServiceProvider, IKeepaliveProvide
   }
 
   private handleKeepaliveResponse(data: any, status: any): void {
-    this.rootScope.$broadcast('KeepaliveResponse', {
+    this.rootScope.$broadcast('$keepaliveResponse', {
       data: data,
       status: status
     });

@@ -97,7 +97,7 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
   }
 
   autoResume(autoResume: boolean): void {
-    this.options.autoResume = autoResume ? 'Idle' : 'off';
+    this.options.autoResume = autoResume ? 'idle' : 'off';
   }
 
   keepalive(keepalive: boolean): void {
@@ -142,7 +142,7 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
       return;
     }
 
-    this.rootScope.$broadcast('IdleWarn', this.state.countdown);
+    this.rootScope.$broadcast('$userIdleWarning', this.state.countdown);
     this.state.countdown--;
   }
 
@@ -158,7 +158,7 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
     this.state.running = false;
     this.state.countdown = 0;
 
-    this.rootScope.$broadcast('IdleTimeout');
+    this.rootScope.$broadcast('$userTimeout');
   }
 
   /**
@@ -166,7 +166,7 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
    */
   private toggleState(): void {
     this.state.idling = !this.state.idling;
-    let name = this.state.idling ? 'IdleStart' : 'IdleEnd';
+    let name = this.state.idling ? '$userIdle' : '$userBack';
     if (this.state.idling) {
       this.rootScope.$broadcast(name);
       this.stopKeepalive();
