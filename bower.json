@@ -1,0 +1,9 @@
+{
+  "name": "angular-idle",
+  "authors": [
+    "Luis Rogelio Hernández López"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5"
+  }
+}

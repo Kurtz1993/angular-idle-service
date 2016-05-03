@@ -1,6 +1,6 @@
-/// <reference path="../src/KeepAlive/keepAlive.ts" />
-/// <reference path="../src/LocalStorage/alternativeStorage.ts" />
-/// <reference path="../src/LocalStorage/localStorage.ts" />
+/// <reference path="KeepAlive/keepAlive.ts" />
 module Idle {
-
+  export let idleModule = angular
+    .module('Idle', [])
+    .provider('Keepalive', Modules.KeepAliveProvider);
 }

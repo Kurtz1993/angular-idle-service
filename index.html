@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Idle test</title>
+</head>
+<body ng-app="testApp">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="dist/angular-idle.js"></script>
+  <script>
+    angular.module('testApp', ['Idle'])
+      .config(function (KeepaliveProvider) {
+        KeepaliveProvider.setInterval(5);
+        KeepaliveProvider.http('http://localhost:8080');
+      })
+      .run(function(Keepalive, $rootScope) {
+        //Keepalive.start();
+        $rootScope.$on('Keepalive', function () {
+          console.log('Keeping alive...');
+        });
+        $rootScope.$on('KeepaliveResponse', function(data, status) {
+          console.log("Status: " + status);
+          console.log(data);
+        });
+      });
+  </script>
+</body>
+</html>
