@@ -3,8 +3,8 @@
 /// <reference path="Idle/idle.ts" />
 module IdlePackage {
   export let idleModule = angular
-    .module('Idle', [])
-    .service('IdleLocalStorage', Modules.IdleStorage)
-    .provider('Keepalive', Modules.KeepaliveProvider)
-    .provider('Idle', Modules.Idle);
+    .module('$idle', [])
+    .service('$idleLocalStorage', Modules.IdleStorage)
+    .provider('$keepalive', Modules.KeepaliveProvider)
+    .provider('$idle', Modules.Idle);
 }

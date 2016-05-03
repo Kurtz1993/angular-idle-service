@@ -75,7 +75,7 @@ module IdlePackage.Modules {
     }
 
     private ping(): void {
-      this.rootScope.$broadcast('Keepalive');
+      this.rootScope.$broadcast('$keepalive');
       if (angular.isObject(this.options.http)) {
         this.$http(this.options.http)
           .success(this.handleKeepaliveResponse.bind(this))
@@ -84,7 +84,7 @@ module IdlePackage.Modules {
     }
 
     private handleKeepaliveResponse(data: any, status: any): void {
-      this.rootScope.$broadcast('KeepaliveResponse', {
+      this.rootScope.$broadcast('$keepaliveResponse', {
         data: data,
         status: status
       });
