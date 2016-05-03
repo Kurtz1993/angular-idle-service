@@ -1,4 +1,4 @@
-module Idle.Modules {
+module IdlePackage.Modules {
   export class IdleStorage implements IIdleStorage {
     static $inject = ['$window'];
     private storage: Storage;

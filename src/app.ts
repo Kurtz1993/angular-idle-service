@@ -1,7 +1,7 @@
 /// <reference path="KeepAlive/keepAlive.ts" />
 /// <reference path="IdleStorage/idleStorage.ts" />
 /// <reference path="Idle/idle.ts" />
-module Idle {
+module IdlePackage {
   export let idleModule = angular
     .module('Idle', [])
     .service('IdleLocalStorage', Modules.IdleStorage)

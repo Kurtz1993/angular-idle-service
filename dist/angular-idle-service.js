@@ -1,5 +1,5 @@
-var Idle;
-(function (Idle) {
+var IdlePackage;
+(function (IdlePackage) {
     var Modules;
     (function (Modules) {
         var KeepaliveProvider = (function () {
@@ -81,10 +81,10 @@ var Idle;
             return KeepaliveProvider;
         }());
         Modules.KeepaliveProvider = KeepaliveProvider;
-    })(Modules = Idle.Modules || (Idle.Modules = {}));
-})(Idle || (Idle = {}));
-var Idle;
-(function (Idle) {
+    })(Modules = IdlePackage.Modules || (IdlePackage.Modules = {}));
+})(IdlePackage || (IdlePackage = {}));
+var IdlePackage;
+(function (IdlePackage) {
     var Modules;
     (function (Modules) {
         var IdleStorage = (function () {
@@ -153,10 +153,10 @@ var Idle;
             };
             return AlternativeStorage;
         }());
-    })(Modules = Idle.Modules || (Idle.Modules = {}));
-})(Idle || (Idle = {}));
-var Idle;
-(function (Idle_1) {
+    })(Modules = IdlePackage.Modules || (IdlePackage.Modules = {}));
+})(IdlePackage || (IdlePackage = {}));
+var IdlePackage;
+(function (IdlePackage) {
     var Modules;
     (function (Modules) {
         var Idle = (function () {
@@ -439,17 +439,17 @@ var Idle;
             };
             return LastMove;
         }());
-    })(Modules = Idle_1.Modules || (Idle_1.Modules = {}));
-})(Idle || (Idle = {}));
+    })(Modules = IdlePackage.Modules || (IdlePackage.Modules = {}));
+})(IdlePackage || (IdlePackage = {}));
 /// <reference path="KeepAlive/keepAlive.ts" />
 /// <reference path="IdleStorage/idleStorage.ts" />
 /// <reference path="Idle/idle.ts" />
-var Idle;
-(function (Idle) {
-    Idle.idleModule = angular
+var IdlePackage;
+(function (IdlePackage) {
+    IdlePackage.idleModule = angular
         .module('Idle', [])
-        .service('IdleLocalStorage', Idle.Modules.IdleStorage)
-        .provider('Keepalive', Idle.Modules.KeepaliveProvider)
-        .provider('Idle', Idle.Modules.Idle);
-})(Idle || (Idle = {}));
-//# sourceMappingURL=angular-idle.js.map
+        .service('IdleLocalStorage', IdlePackage.Modules.IdleStorage)
+        .provider('Keepalive', IdlePackage.Modules.KeepaliveProvider)
+        .provider('Idle', IdlePackage.Modules.Idle);
+})(IdlePackage || (IdlePackage = {}));
+//# sourceMappingURL=angular-idle-service.js.map

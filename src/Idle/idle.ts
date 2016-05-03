@@ -1,4 +1,4 @@
-module Idle.Modules {
+module IdlePackage.Modules {
   export class Idle implements ng.IServiceProvider, IIdleProvider {
     private options: IIdleProviderOptions;
     private state: IIdleState;

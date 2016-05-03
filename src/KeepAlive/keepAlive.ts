@@ -1,4 +1,4 @@
-module Idle.Modules {
+module IdlePackage.Modules {
   export class KeepaliveProvider implements ng.IServiceProvider, IKeepaliveProvider {
     private options: IKeepaliveOptions;
     private state: { ping: ng.IPromise<any> };

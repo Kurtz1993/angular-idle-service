@@ -7,11 +7,15 @@
     "angular": "^1.5.0"
   },
   "main": "dist/angular-idle.js",
+  "typescript": {
+    "definition": "dist/angular-idle-service.d.ts"
+  },
   "homepage": "https://github.com/Kurtz1993/angular-idle-service",
   "description": "",
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "src",
     "node_modules",
     "bower_components",
     "test",
