@@ -1,9 +1,21 @@
 {
-  "name": "angular-idle",
+  "name": "angular-idle-service",
   "authors": [
     "Luis Rogelio Hernández López"
   ],
   "dependencies": {
-    "angular": "^1.5.5"
-  }
+    "angular": "^1.5.0"
+  },
+  "main": "dist/angular-idle.js",
+  "homepage": "https://github.com/Kurtz1993/angular-idle-service",
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "**/*.ts"
+  ]
 }
