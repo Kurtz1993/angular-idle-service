@@ -23,4 +23,7 @@ angular.module('testApp', ['$idle'])
         $rootScope.$on('$userTimeout', function () {
             console.log('You timed out');
         });
+        $rootScope.$on('$userBack', function () {
+            console.log('Now you are not idle');
+        });
     });

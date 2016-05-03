@@ -1,6 +1,6 @@
 {
   "name": "angular-idle-service",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An Angular service that responds to idle users.",
   "main": "./dist/angular-idle-service.js",
   "typings": "./dist/angular-idle-service.d.ts",
