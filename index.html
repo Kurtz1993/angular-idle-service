@@ -13,7 +13,11 @@
         KeepaliveProvider.setInterval(5);
         KeepaliveProvider.http('http://localhost:8080');
       })
-      .run(function(Keepalive, $rootScope) {
+      .run(function(Keepalive, $rootScope, IdleLocalStorage) {
+        IdleLocalStorage.set('V', ':V');
+        console.log(IdleLocalStorage.get('V'));
+        IdleLocalStorage.remove('V');
+        console.log(window.localStorage);
         //Keepalive.start();
         $rootScope.$on('Keepalive', function () {
           console.log('Keeping alive...');

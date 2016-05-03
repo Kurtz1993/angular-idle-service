@@ -42,3 +42,23 @@ declare interface IKeepaliveOptions {
    */
   interval: number
 }
+
+declare interface IIdleStorage {
+  /**
+   * Sets an item to the local storage.
+   * @param key The key for the item.
+   * @param value The value of the item.
+   */
+  set(key: string, value: string): void;
+  /**
+   * Gets the specified item.
+   * @param key The key for the item to retrieve.
+   * @returns The value for the key in JSON format.
+   */
+  get(key: string): any;
+  /**
+   * Removes the specified item.
+   * @param key The key for the item to remove.
+   */
+  remove(key: string): void;
+}
