@@ -15,7 +15,7 @@ module Idle.Modules {
       }
     }
 
-    set(key: string, value: string) {
+    set(key: string, value: any) {
       this.storage.setItem(`idle.${key}`, angular.toJson(value));
     }
 
