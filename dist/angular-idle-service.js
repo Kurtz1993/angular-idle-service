@@ -236,16 +236,16 @@
 	            running: false,
 	            countdown: null
 	        };
-	        this.$get.$inject = ['$interval', '$rootScope', '$document', '$window', 'Keepalive', 'IdleLocalStorage'];
+	        this.$get.$inject = ['$interval', '$rootScope', '$document', '$window', '$keepalive', '$idleLocalStorage'];
 	    }
-	    Idle.prototype.$get = function ($interval, $rootScope, $document, $window, Keepalive, IdleLocalStorage) {
+	    Idle.prototype.$get = function ($interval, $rootScope, $document, $window, $keepalive, $idleLocalStorage) {
 	        var _this = this;
 	        this.interval = $interval;
 	        this.rootScope = $rootScope;
 	        this.document = $document;
 	        this.window = $window;
-	        this.keepaliveService = Keepalive;
-	        this.storage = IdleLocalStorage;
+	        this.keepaliveService = $keepalive;
+	        this.storage = $idleLocalStorage;
 	        this.id = new Date().getTime();
 	        var lastmove = new LastMove();
 	        this.document.find('html').on(this.options.interrupt, function (event) {
