@@ -10,6 +10,16 @@
   "typescript": {
     "definition": "dist/angular-idle-service.d.ts"
   },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "idle",
+    "ng-idle",
+    "angular-idle-service",
+    "angular-idle",
+    "user",
+    "session"
+  ],
   "homepage": "https://github.com/Kurtz1993/angular-idle-service",
   "description": "",
   "license": "MIT",

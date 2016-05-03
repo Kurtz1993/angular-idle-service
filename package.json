@@ -1,14 +1,15 @@
 {
   "name": "angular-idle-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An Angular service that responds to idle users.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "./dist/angular-idle-service.js",
+  "typings": "./dist/angular-idle-service.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kurtz1993/angular-idle-service.git"
+  },
+  "scripts": {
+    "prepublish": "./node_modules/.bin/gulp build"
   },
   "keywords": [
     "angular",
@@ -27,6 +28,14 @@
   },
   "homepage": "https://github.com/Kurtz1993/angular-idle-service#readme",
   "dependencies": {
-    "angular": "^1.5.5"
+    "angular": "^1.5.0",
+    "source-map": "^0.5.6",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "webpack": "^1.13.0",
+    "webpack-stream": "^3.2.0"
   }
 }
