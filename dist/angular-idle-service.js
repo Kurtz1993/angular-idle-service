@@ -65,7 +65,7 @@ var IdlePackage;
                 this.interval.cancel(this.state.ping);
             };
             KeepaliveProvider.prototype.ping = function () {
-                this.rootScope.$broadcast('Keepalive');
+                this.rootScope.$broadcast('$keepalive');
                 if (angular.isObject(this.options.http)) {
                     this.$http(this.options.http)
                         .success(this.handleKeepaliveResponse.bind(this))
@@ -73,7 +73,7 @@ var IdlePackage;
                 }
             };
             KeepaliveProvider.prototype.handleKeepaliveResponse = function (data, status) {
-                this.rootScope.$broadcast('KeepaliveResponse', {
+                this.rootScope.$broadcast('$keepaliveResponse', {
                     data: data,
                     status: status
                 });
@@ -176,16 +176,16 @@ var IdlePackage;
                     running: false,
                     countdown: null
                 };
-                this.$get.$inject = ['$interval', '$rootScope', '$document', '$window', 'Keepalive', 'IdleLocalStorage'];
+                this.$get.$inject = ['$interval', '$rootScope', '$document', '$window', '$keepalive', '$idleLocalStorage'];
             }
-            Idle.prototype.$get = function ($interval, $rootScope, $document, $window, Keepalive, IdleLocalStorage) {
+            Idle.prototype.$get = function ($interval, $rootScope, $document, $window, $keepalive, $idleLocalStorage) {
                 var _this = this;
                 this.interval = $interval;
                 this.rootScope = $rootScope;
                 this.document = $document;
                 this.window = $window;
-                this.keepaliveService = Keepalive;
-                this.storage = IdleLocalStorage;
+                this.keepaliveService = $keepalive;
+                this.storage = $idleLocalStorage;
                 this.id = new Date().getTime();
                 var lastmove = new LastMove();
                 this.document.find('html').on(this.options.interrupt, function (event) {
@@ -239,7 +239,7 @@ var IdlePackage;
                 }
             };
             Idle.prototype.autoResume = function (autoResume) {
-                this.options.autoResume = autoResume ? 'Idle' : 'off';
+                this.options.autoResume = autoResume ? 'idle' : 'off';
             };
             Idle.prototype.keepalive = function (keepalive) {
                 this.options.keepalive = keepalive === true;
@@ -276,7 +276,7 @@ var IdlePackage;
                     this.timeout();
                     return;
                 }
-                this.rootScope.$broadcast('IdleWarn', this.state.countdown);
+                this.rootScope.$broadcast('$userIdleWarning', this.state.countdown);
                 this.state.countdown--;
             };
             /**
@@ -289,14 +289,14 @@ var IdlePackage;
                 this.state.idling = true;
                 this.state.running = false;
                 this.state.countdown = 0;
-                this.rootScope.$broadcast('IdleTimeout');
+                this.rootScope.$broadcast('$userTimeout');
             };
             /**
              * Sends an IdleStart or IdleEnd event depending on the user state.
              */
             Idle.prototype.toggleState = function () {
                 this.state.idling = !this.state.idling;
-                var name = this.state.idling ? 'IdleStart' : 'IdleEnd';
+                var name = this.state.idling ? '$userIdle' : '$userBack';
                 if (this.state.idling) {
                     this.rootScope.$broadcast(name);
                     this.stopKeepalive();
@@ -447,9 +447,9 @@ var IdlePackage;
 var IdlePackage;
 (function (IdlePackage) {
     IdlePackage.idleModule = angular
-        .module('Idle', [])
-        .service('IdleLocalStorage', IdlePackage.Modules.IdleStorage)
-        .provider('Keepalive', IdlePackage.Modules.KeepaliveProvider)
-        .provider('Idle', IdlePackage.Modules.Idle);
+        .module('$idle', [])
+        .service('$idleLocalStorage', IdlePackage.Modules.IdleStorage)
+        .provider('$keepalive', IdlePackage.Modules.KeepaliveProvider)
+        .provider('$idle', IdlePackage.Modules.Idle);
 })(IdlePackage || (IdlePackage = {}));
 //# sourceMappingURL=angular-idle-service.js.map

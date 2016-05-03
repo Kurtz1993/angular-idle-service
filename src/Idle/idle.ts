@@ -26,17 +26,17 @@ module IdlePackage.Modules {
         running: false,
         countdown: null
       };
-      this.$get.$inject = ['$interval', '$rootScope', '$document', '$window', 'Keepalive', 'IdleLocalStorage'];
+      this.$get.$inject = ['$interval', '$rootScope', '$document', '$window', '$keepalive', '$idleLocalStorage'];
     }
 
     $get($interval: ng.IIntervalService, $rootScope: ng.IRootScopeService, $document: ng.IDocumentService,
-      $window: ng.IWindowService, Keepalive: IKeepaliveService, IdleLocalStorage: IIdleStorage): IIdleService {
+      $window: ng.IWindowService, $keepalive: IKeepaliveService, $idleLocalStorage: IIdleStorage): IIdleService {
       this.interval = $interval;
       this.rootScope = $rootScope;
       this.document = $document;
       this.window = $window;
-      this.keepaliveService = Keepalive;
-      this.storage = IdleLocalStorage;
+      this.keepaliveService = $keepalive;
+      this.storage = $idleLocalStorage;
       this.id = new Date().getTime();
       let lastmove = new LastMove();
 

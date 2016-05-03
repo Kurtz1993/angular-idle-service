@@ -8,7 +8,6 @@ angular.module('testApp', ['$idle'])
     })
     .run(function ($keepalive, $rootScope, $idle) {
         //$keepalive.start();
-        console.log(Idle);
         $idle.watch();
         $rootScope.$on('$keepalive', function () {
             console.log('Keeping alive...');
@@ -22,5 +21,8 @@ angular.module('testApp', ['$idle'])
         });
         $rootScope.$on('$userTimeout', function () {
             console.log('You timed out');
+        });
+        $rootScope.$on('$userBack', function () {
+            console.log('Now you are not idle');
         });
     });
