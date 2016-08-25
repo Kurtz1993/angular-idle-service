@@ -36,7 +36,7 @@ angular.module('idleApp', ['$idle'])
     })
     .run(function ($idle) {
         $idle.watch();
-    })<
+    })
 ```
 
 ## API Reference
