@@ -126,6 +126,11 @@ declare interface IIdleService {
    * @param anotherTab Indicates if the interruption was made from another tab.
    */
   interrupt(anotherTab?: boolean);
+  /**
+   * Gets the IdleState of the current session.
+   * @returns An IdleState object.
+   */
+  getIdleState(): IIdleState;
 }
 
 declare interface IIdleState {
@@ -149,6 +154,10 @@ declare interface IIdleState {
    * Countdown until the user times out.
    */
   countdown: number;
+  /**
+   * Number of secods the user has been idle.
+   */
+  userIdleTime: number;
 }
 
 declare interface IIdleProviderOptions {
