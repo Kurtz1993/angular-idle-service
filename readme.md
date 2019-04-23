@@ -161,6 +161,11 @@ unwatch(): void;
  * @param anotherTab Indicates if the interruption was made from another tab.
  */
 interrupt(anotherTab?: boolean);
+/**
+ * Gets the IdleState of the current session.
+ * @returns An IdleState object.
+ */
+getIdleState(): IIdleState;
 ```
 
 ## Events
