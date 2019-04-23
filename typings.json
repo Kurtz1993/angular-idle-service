@@ -1,9 +1,0 @@
-{
-  "globalDependencies": {
-    "angular": "registry:dt/angular#1.5.0+20161016133926",
-    "jquery": "registry:dt/jquery#1.10.0+20160929162922",
-    "node": "registry:dt/node#6.0.0+20161014191813",
-    "orchestrator": "registry:dt/orchestrator#0.0.0+20160316155526",
-    "q": "registry:dt/q#0.0.0+20161004185634"
-  }
-}
