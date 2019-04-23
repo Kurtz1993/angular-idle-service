@@ -1,0 +1,6 @@
+node_modules/
+.cache/
+dist/*
+!dist/angular-idle-service.d.ts
+!dist/angular-idle-service.js
+!dist/angular-idle-service.js.map

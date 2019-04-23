@@ -1,2 +1,4 @@
 node_modules/
-dist/
+.cache/
+dist/*
+!dist/angular-idle-service.d.ts
