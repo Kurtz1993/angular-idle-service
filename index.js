@@ -20,12 +20,15 @@ angular.module('testApp', ['$idle'])
         });
         $rootScope.$on('$userIdle', function () {
             console.log('You are idle...');
-            console.log(`You have been idle for ${$idle.getIdleState().userIdleTime} seconds`);
         });
         $rootScope.$on('$userTimeout', function () {
             console.log('You timed out');
         });
         $rootScope.$on('$userBack', function () {
             console.log('Now you are not idle');
+        });
+        $rootScope.$on('$userActive', function (_, timeIdle) {
+            console.log(timeIdle)
+            console.log(`You have been idle for ${timeIdle} seconds`);
         });
     });
