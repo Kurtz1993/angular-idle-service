@@ -4,7 +4,8 @@
   "description": "An Angular service that responds to idle users.",
   "main": "./dist/angular-idle-service.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build src/index.ts -o angular-idle-service"
   },
   "typescript": {
     "definition": "dist/angular-idle-service.d.ts"
@@ -30,7 +31,7 @@
     "url": "https://github.com/Kurtz1993/angular-idle-service/issues"
   },
   "homepage": "https://github.com/Kurtz1993/angular-idle-service#readme",
-  "dependencies": {
+  "peerDependencies": {
     "angular": "^1.5.5",
     "rxjs": "^5.5.12"
   },
@@ -38,6 +39,9 @@
     "@types/angular": "^1.6.54",
     "@types/jquery": "^3.3.29",
     "@types/node": "^11.13.7",
-    "@types/q": "^1.5.2"
+    "@types/q": "^1.5.2",
+    "@types/rx": "^4.1.1",
+    "parcel": "^1.12.3",
+    "typescript": "^3.4.5"
   }
 }
