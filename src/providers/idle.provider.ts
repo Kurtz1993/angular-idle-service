@@ -330,7 +330,7 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
       .split(" ")
       .map(event => Observable.fromEvent(htmlElm, event).throttleTime(250));
 
-    let mergedObservables = Observable.merge(...observables).throttleTime(200);
+    let mergedObservables = Observable.merge(...observables).throttleTime(1000);
     let lastmove = new LastMove();
 
     mergedObservables.subscribe((event: JQueryEventObject) => {
