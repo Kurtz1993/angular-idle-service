@@ -1,7 +1,8 @@
 import * as angular from "angular";
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/throttleTime';
-import 'rxjs/add/observable/fromEvent';
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/throttleTime";
+import "rxjs/add/observable/fromEvent";
+import "rxjs/add/observable/merge";
 
 export class Idle implements ng.IServiceProvider, IIdleProvider {
   private options: IIdleProviderOptions;
@@ -58,26 +59,8 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
     this.keepaliveService = $keepalive;
     this.storage = $idleLocalStorage;
     this.id = new Date().getTime();
-    let lastmove = new LastMove();
 
-    let obs = Observable.fromEvent(document.querySelector("html"), "click").throttleTime(250);
-
-    obs.subscribe(ev => console.log(ev));
-
-    this.document.find("html").on(this.options.interrupt, (event: JQueryEventObject) => {
-      if (
-        event.type === "mousemove" &&
-        event.originalEvent &&
-        event.originalEvent["movementX"] === 0 &&
-        event.originalEvent["movementY"] === 0
-      ) {
-        return;
-      }
-
-      if (event.type !== "mousemove" || lastmove.hasMoved(event)) {
-        this.interruptTimers();
-      }
-    });
+    this.buildObservables(this.options.interrupt);
 
     if (this.options.windowInterrupt) {
       let fn = () => this.interruptTimers();
@@ -283,6 +266,7 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
       this.options.autoResume === "idle" ||
       (this.options.autoResume === "notIdle" && !this.state.idling)
     ) {
+      this.rootScope.$broadcast("$userActive", this.state.userIdleTime);
       this.watch(anotherTab);
     }
   }
@@ -334,6 +318,35 @@ export class Idle implements ng.IServiceProvider, IIdleProvider {
     this.interval.cancel(this.state.idle);
     this.interval.cancel(this.state.timeout);
     this.interval.cancel(this.idleCounter);
+  }
+
+  /**
+   * Builds an observable based on the given DOM events.
+   * @param events A space-separated list of events to listen.
+   */
+  private buildObservables(events: string): void {
+    const htmlElm = document.querySelector("html");
+    const observables = events
+      .split(" ")
+      .map(event => Observable.fromEvent(htmlElm, event).throttleTime(250));
+
+    let mergedObservables = Observable.merge(...observables).throttleTime(200);
+    let lastmove = new LastMove();
+
+    mergedObservables.subscribe((event: JQueryEventObject) => {
+      if (
+        event.type === "mousemove" &&
+        event.originalEvent &&
+        event.originalEvent["movementX"] === 0 &&
+        event.originalEvent["movementY"] === 0
+      ) {
+        return;
+      }
+
+      if (event.type !== "mousemove" || lastmove.hasMoved(event)) {
+        this.interruptTimers();
+      }
+    });
   }
 } // End of class
 
