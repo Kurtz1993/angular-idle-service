@@ -40,7 +40,7 @@ module IdlePackage.Modules {
       this.id = new Date().getTime();
       let lastmove = new LastMove();
 
-      this.document.find('html').on(this.options.interrupt, (event) => {
+      this.document.find('html').on(this.options.interrupt, (event: JQueryEventObject) => {
         if (event.type === 'mousemove' && event.originalEvent && event.originalEvent['movementX'] === 0 && event.originalEvent['movementY'] === 0) {
           return;
         }
