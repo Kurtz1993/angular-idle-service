@@ -1,5 +1,5 @@
 module IdlePackage.Modules {
-  export class KeepaliveProvider implements ng.IServiceProvider, IKeepaliveProvider {
+  export class KeepAliveProvider implements ng.IServiceProvider, IKeepaliveProvider {
     private options: IKeepaliveOptions;
     private state: { ping: ng.IPromise<any> };
     private rootScope: ng.IRootScopeService;
@@ -7,13 +7,13 @@ module IdlePackage.Modules {
     private $http: ng.IHttpService;
 
     constructor() {
-      this.$get.$inject = ['$rootScope', '$interval', '$http'];
+      this.$get.$inject = ["$rootScope", "$interval", "$http"];
       this.options = {
         http: null,
-        interval: 10 * 60
+        interval: 10 * 60,
       };
       this.state = {
-        ping: null
+        ping: null,
       };
     }
 
@@ -23,15 +23,17 @@ module IdlePackage.Modules {
      */
     http(url: string | ng.IRequestConfig) {
       let httpObj: ng.IRequestConfig = {
-        url: '',
-        method: ''
+        url: "",
+        method: "",
       };
       if (!url) {
-        throw new Error('Argument must contain a URL as a string or an object containing the Angular HTTP request configuration.');
+        throw new Error(
+          "Argument must contain a URL as a string or an object containing the Angular HTTP request configuration."
+        );
       }
       if (angular.isString(url)) {
         httpObj.url = url as string;
-        httpObj.method = 'GET';
+        httpObj.method = "GET";
       } else {
         httpObj = url as ng.IRequestConfig;
       }
@@ -40,7 +42,11 @@ module IdlePackage.Modules {
       this.options.http = httpObj;
     }
 
-    $get($rootScope: ng.IRootScopeService, $interval: ng.IIntervalService, $http: ng.IHttpService): IKeepaliveService {
+    $get(
+      $rootScope: ng.IRootScopeService,
+      $interval: ng.IIntervalService,
+      $http: ng.IHttpService
+    ): IKeepaliveService {
       this.rootScope = $rootScope;
       this.interval = $interval;
       this.$http = $http;
@@ -49,7 +55,7 @@ module IdlePackage.Modules {
         setInterval: this.setInterval.bind(this),
         start: this.start.bind(this),
         stop: this.stop.bind(this),
-        ping: this.ping.bind(this)
+        ping: this.ping.bind(this),
       };
     }
 
@@ -59,7 +65,7 @@ module IdlePackage.Modules {
      */
     setInterval(time: number): void {
       if (isNaN(time) || time <= 0) {
-        throw new Error('Interval must be a positive integer number.');
+        throw new Error("Interval must be a positive integer number.");
       }
       this.options.interval = time;
     }
@@ -75,18 +81,18 @@ module IdlePackage.Modules {
     }
 
     private ping(): void {
-      this.rootScope.$broadcast('$keepalive');
+      this.rootScope.$broadcast("$keepalive");
       if (angular.isObject(this.options.http)) {
         this.$http(this.options.http)
-          .success(this.handleKeepaliveResponse.bind(this))
-          .error(this.handleKeepaliveResponse.bind(this));
+          .then(this.handleKeepaliveResponse.bind(this))
+          .catch(this.handleKeepaliveResponse.bind(this));
       }
     }
 
     private handleKeepaliveResponse(data: any, status: any): void {
-      this.rootScope.$broadcast('$keepaliveResponse', {
+      this.rootScope.$broadcast("$keepaliveResponse", {
         data: data,
-        status: status
+        status: status,
       });
     }
   }

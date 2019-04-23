@@ -1,14 +1,14 @@
 module IdlePackage.Modules {
   export class IdleStorage implements IIdleStorage {
-    static $inject = ['$window'];
+    static $inject = ["$window"];
     private storage: Storage;
 
     constructor($window: ng.IWindowService) {
       // This is done because Safari issues with the localStorage when accessing on private tab.
       try {
         let s = $window.localStorage;
-        s.setItem('idleStorage', '');
-        s.removeItem('idleStorage');
+        s.setItem("idleStorage", "");
+        s.removeItem("idleStorage");
         this.storage = s;
       } catch (err) {
         this.storage = new AlternativeStorage();
@@ -47,7 +47,7 @@ module IdlePackage.Modules {
      * @returns The item or null if it doesn't exist.
      */
     getItem(key: string): any {
-      if (typeof this.storage[key] !== 'undefined') {
+      if (typeof this.storage[key] !== "undefined") {
         return this.storage[key];
       }
 
