@@ -17,22 +17,22 @@ angular.module('idleApp', ['$idle'])
     .controller('EventsController', function ($scope, $idle) {
         $scope.$on('$userIdle', function () {
             alert('You appear to be idle');
-        }); 
+        });
     })
     .config(function ($idleProvider, $keepaliveProvider) {
         // The keepalive ping will be sent every 30 seconds.
         $keepaliveProvider.setInterval(30);
         // We will ping the following address to keep the session alive.
         $keepaliveProvider.http('https://my.server/keepalive');
-        
+
         // Set the idle and timeout timers in seconds.
         // User is considered idle if AFK for 4.5 minutes
         $idleProvider.setIdleTime(270);
         // User will timeout at the end of 15 seconds anfter considered idle.
-        $idleProvider.setTimeoutTime(15); 
+        $idleProvider.setTimeoutTime(15);
         // The $idle service will ping the specified URL (see $keepaliveProvider.http) to keep the session alive.
         $idleProvider.keepalive(true);
-        
+
     })
     .run(function ($idle) {
         $idle.watch();
@@ -169,6 +169,9 @@ This event fires when the user appears to have gone idle.
 
 ### $userBack
 This event fires when the user has return from idle, and before being considered timed out.
+
+### $userActive
+This event fires when the user triggers one or more of the events you specified in the configuration. It can occur only once per 1 second.
 
 ### $userIdleWarning
 This event fires just after the $userIdle event, and includes a countdown until the user is considered timed out.
