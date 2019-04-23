@@ -56,6 +56,11 @@ module IdlePackage.Modules {
       this.id = new Date().getTime();
       let lastmove = new LastMove();
 
+      let obs = Rx.Observable.fromEvent(document.querySelector('html'), 'click')
+        .throttleTime(250);
+
+      obs.subscribe(ev => console.log(ev));
+
       this.document.find("html").on(this.options.interrupt, (event: JQueryEventObject) => {
         if (
           event.type === "mousemove" &&
