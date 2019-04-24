@@ -6,7 +6,7 @@ Some applications may need to detect if a user is idle and perform certain actio
 ### This module requires AngularJS >=1.2.0
 
 ## Installation
-You can install the module via `npm install --save angular-idle-service` or `bower install --save angular-idle-service`.
+You can install the module via `npm install --save angular-idle-service`.
 
 
 ## Usage example
