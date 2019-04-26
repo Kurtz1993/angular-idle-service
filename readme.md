@@ -3,7 +3,7 @@
 ## Description
 Some applications may need to detect if a user is idle and perform certain actions when this happens like warning them about this inactivity or logging them out of the application for example.
 
-### This module requires AngularJS >=1.2.0
+### This module requires AngularJS >=1.2.0 and RxJS v5
 
 ## Installation
 You can install the module via `npm install --save angular-idle-service`.
