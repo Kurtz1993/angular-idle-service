@@ -1,5 +1,8 @@
+import * as angular from "angular";
+import { idleModule } from './src/index';
+
 angular
-  .module("testApp", ["$idle"])
+  .module("testApp", [idleModule])
   .config(function($keepaliveProvider, $idleProvider) {
     $idleProvider.setTimeoutTime(5);
     $idleProvider.setIdleTime(10);
@@ -38,6 +41,6 @@ angular
       $idle.unwatch();
     };
     $scope.resume = function resume() {
-      $idle.watch();
+      $idle.watch(true);
     };
   });
