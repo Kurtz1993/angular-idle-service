@@ -33,7 +33,7 @@
   "homepage": "https://github.com/Kurtz1993/angular-idle-service#readme",
   "peerDependencies": {
     "angular": "^1.5.5",
-    "rxjs": "^5.5.12"
+    "rxjs": "^5.4.0"
   },
   "devDependencies": {
     "@types/angular": "^1.6.54",
@@ -43,5 +43,9 @@
     "@types/rx": "^4.1.1",
     "parcel": "^1.12.3",
     "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "angular": "^1.5.11",
+    "rxjs": "^5.5.12"
   }
 }
