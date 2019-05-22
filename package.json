@@ -4,9 +4,9 @@
   "description": "An Angular service that responds to idle users.",
   "main": "./dist/angular-idle-service.js",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "webpack-dev-server --mode development --open --config webpack.config.dev.js",
     "prebuild": "rimraf dist/*.js dist/*.js.map",
-    "build": "parcel build src/index.ts -o angular-idle-service"
+    "build": "webpack --mode production"
   },
   "typescript": {
     "definition": "dist/angular-idle-service.d.ts"
@@ -42,9 +42,13 @@
     "@types/node": "^11.13.7",
     "@types/q": "^1.5.2",
     "@types/rx": "^4.1.1",
-    "parcel": "^1.12.3",
+    "awesome-typescript-loader": "^5.2.1",
+    "html-webpack-plugin": "^3.2.0",
     "rimraf": "^2.6.3",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "webpack": "^4.32.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
     "angular": "^1.5.11",
