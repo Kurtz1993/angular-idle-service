@@ -1,4 +1,5 @@
 const path = require("path");
+const webpackRxjsExternals = require("webpack-rxjs-externals");
 
 module.exports = {
   entry: "./src/index.ts",
@@ -18,4 +19,10 @@ module.exports = {
     ],
   },
 
+  devtool: "source-map",
+
+  externals: [
+    webpackRxjsExternals(),
+    "angular"
+  ],
 };
