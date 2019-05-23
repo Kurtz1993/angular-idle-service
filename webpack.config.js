@@ -9,6 +9,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "angular-idle-service.js",
+    library: "angularIdleService",
+    libraryTarget: "umd"
   },
   module: {
     rules: [
