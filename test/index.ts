@@ -1,14 +1,14 @@
 import * as angular from "angular";
-import { idleModule } from './src/index';
+import { idleModule } from '../src/index';
 
 angular
   .module("testApp", [idleModule])
   .config(function($keepaliveProvider, $idleProvider) {
     $idleProvider.setTimeoutTime(5);
     $idleProvider.setIdleTime(10);
-    $idleProvider.keepalive(false);
-    $keepaliveProvider.setInterval(5);
-    $keepaliveProvider.http("http://localhost:8080");
+    // $idleProvider.keepalive(false);
+    // $keepaliveProvider.setInterval(5);
+    // $keepaliveProvider.http("http://localhost:8080");
   })
   .run(function($keepalive, $rootScope, $idle) {
     //$keepalive.start();

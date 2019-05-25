@@ -2,16 +2,16 @@
   "name": "angular-idle-service",
   "version": "2.0.3",
   "description": "An Angular service that responds to idle users.",
-  "main": "./dist/angular-idle-service.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --config webpack.config.dev.js",
     "prebuild": "rimraf dist/*.js dist/*.js.map",
     "build": "webpack --mode production"
   },
   "typescript": {
-    "definition": "dist/angular-idle-service.d.ts"
+    "definition": "dist/index.d.ts"
   },
-  "typings": "angular-idle-service.d.ts",
+  "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kurtz1993/angular-idle-service.git"
@@ -42,17 +42,15 @@
     "@types/node": "^11.13.7",
     "@types/q": "^1.5.2",
     "@types/rx": "^4.1.1",
-    "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^3.2.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.4.5",
-    "webpack": "^4.32.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1",
-    "webpack-rxjs-externals": "^1.1.0"
-  },
-  "dependencies": {
     "angular": "^1.5.11",
     "rxjs": "^5.5.12"
-  }
+  },
+  "files": [
+    "dist",
+    "readme.md",
+    "LICENSE"
+  ]
 }

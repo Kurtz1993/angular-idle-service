@@ -1,7 +1,8 @@
-import * as angular from 'angular';
+import * as angular from "angular";
+import { KeepaliveProvider, KeepaliveOptions, KeepaliveService } from '../types/keepalive.types';
 
-export class KeepAliveProvider implements ng.IServiceProvider, IKeepaliveProvider {
-  private options: IKeepaliveOptions;
+export class KeepAliveProvider implements ng.IServiceProvider, KeepaliveProvider {
+  private options: KeepaliveOptions;
   private state: { ping: ng.IPromise<any> };
   private rootScope: ng.IRootScopeService;
   private interval: ng.IIntervalService;
@@ -47,7 +48,7 @@ export class KeepAliveProvider implements ng.IServiceProvider, IKeepaliveProvide
     $rootScope: ng.IRootScopeService,
     $interval: ng.IIntervalService,
     $http: ng.IHttpService
-  ): IKeepaliveService {
+  ): KeepaliveService {
     this.rootScope = $rootScope;
     this.interval = $interval;
     this.$http = $http;

@@ -1,49 +1,4 @@
-declare interface IKeepaliveProvider {
-  /**
-   * Sets the http configurations for the keepalive ping.
-   * @params url A URL or a Angular HTTP requesct configuration object.
-   */
-  http(url: string | ng.IRequestConfig);
-  /**
-   * Sets the interval for the keepalive ping.
-   * @param time Time in seconds for the keepalive ping interval.
-   */
-  setInterval(time: number): void;
-}
-
-declare interface IKeepaliveService {
-  /**
-   * Sets the interval for the keepalive ping.
-   * @param time Time in seconds for the keepalive ping interval.
-   */
-  setInterval(time: number): void;
-  /**
-   * Starts pinging the server.
-   * @returns A promise that can be used to handle server response.
-   */
-  start(): ng.IPromise<any>;
-  /**
-   * Stops pinging the server.
-   */
-  stop(): void;
-  /**
-   * Performs a keep alive ping to the server based on the given options.
-   */
-  ping(): void;
-}
-
-declare interface IKeepaliveOptions {
-  /**
-   * The HTTP configuration headers to perform the ping.
-   */
-  http: ng.IRequestConfig;
-  /**
-   * Time in seconds for the ping interval.
-   */
-  interval: number;
-}
-
-declare interface IIdleProvider {
+export interface IdleProvider {
   /**
    * Sets the number of seconds a user can be idle before they are considered timed out.
    * @param seconds The amount of seconds, or 0 to disable.
@@ -76,7 +31,7 @@ declare interface IIdleProvider {
   keepalive(keepalive: boolean): void;
 }
 
-declare interface IIdleService {
+export interface IdleService {
   /**
    * Sets the number of seconds a user can be idle before they are considered timed out.
    * @param seconds The amount of seconds, or 0 to disable.
@@ -130,10 +85,10 @@ declare interface IIdleService {
    * Gets the IdleState of the current session.
    * @returns An IdleState object.
    */
-  getIdleState(): IIdleState;
+  getIdleState(): IdleState;
 }
 
-declare interface IIdleState {
+export interface IdleState {
   /**
    * A promise to resolve when the user becomes idle.
    */
@@ -160,7 +115,7 @@ declare interface IIdleState {
   userIdleTime: number;
 }
 
-declare interface IIdleProviderOptions {
+export interface IdleProviderOptions {
   /**
    * Indicates the time in seconds that needs to pass before considering the user idlde.
    */
@@ -176,33 +131,5 @@ declare interface IIdleProviderOptions {
   /**
    * An space-separated list of strings containing the name of events that will reset idle timers.
    */
-  interrupt: string;
-  /**
-   * An array of strings containing the name of events that will reset idle timers.
-   */
-  windowInterrupt: string[];
-  /**
-   * Indicates if a keepalive ping should be triggered.
-   */
-  keepalive: boolean;
-}
-
-declare interface IIdleStorage {
-  /**
-   * Sets an item to the local storage.
-   * @param key The key for the item.
-   * @param value The value of the item.
-   */
-  set(key: string, value: any): void;
-  /**
-   * Gets the specified item.
-   * @param key The key for the item to retrieve.
-   * @returns The value for the key in JSON format.
-   */
-  get(key: string): any;
-  /**
-   * Removes the specified item.
-   * @param key The key for the item to remove.
-   */
-  remove(key: string): void;
+  listenFor: string;
 }
